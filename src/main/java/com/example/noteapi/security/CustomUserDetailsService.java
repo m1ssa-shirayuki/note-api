@@ -1,11 +1,14 @@
 package com.example.noteapi.security;
 
 import com.example.noteapi.repository.UserRepository;
-import org.apache.catalina.User;
+import com.example.noteapi.dto.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomUserDetailsService implements CustomUserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
     public CustomUserDetailsService(UserRepository userRepository) {
@@ -22,5 +25,4 @@ public class CustomUserDetailsService implements CustomUserDetailsService {
 
         return new CustomUserDetails(user);
     }
-
 }
